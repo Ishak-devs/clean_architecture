@@ -2,6 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\application_\application_.csproj" />
+    <ProjectReference Include="..\Infrastructure_\Infrastructure_.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

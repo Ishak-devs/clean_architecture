@@ -6,5 +6,5 @@ public class ProduitDto
     public decimal Prix { get; set; }
 
     public int Stock { get; set; }
-    public int Id { get; internal set; }
+    public int Id { get; set; }
 }

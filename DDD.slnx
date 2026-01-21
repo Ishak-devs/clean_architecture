@@ -5,4 +5,5 @@
   <Project Path="application_/application_.csproj" Id="542213fc-e7df-488e-9c5a-eafc49f026d7" />
   <Project Path="domain/domain.csproj" />
   <Project Path="Infrastructure_/Infrastructure_.csproj" Id="c26252b6-6c81-4aab-93df-fe0013605209" />
+  <Project Path="webMVC/webMVC.csproj" Id="122cbb4f-63b2-4a02-80de-be700d784c8b" />
 </Solution>
