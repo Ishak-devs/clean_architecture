@@ -1,5 +1,8 @@
+# SQL Server files
+*.mdf
+*.ldf
+
+# Dossiers de compilation
+bin/
+obj/
 .vs/
-[Bb]in/
-[Oo]bj/
-*.user
-*.suo

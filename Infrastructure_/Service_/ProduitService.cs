@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.DTOs;
 
 namespace Application.Service
 {
@@ -19,11 +20,11 @@ namespace Application.Service
         public async Task<IEnumerable<ProduitDto>> GetAllAsync()
         {
             var produits = await _repo.GetAllAsync();
-            return produits.Select(p => new ProduitDto
+            return produits.Select(static p => new ProduitDto
             {
                 Id = p.Id,
                 Nom = p.Nom,
-                Prix = p.Prix, 
+                Prix = p.Prix,
                 Stock = p.Stock
             });
         }
@@ -37,14 +38,15 @@ namespace Application.Service
             {
                 Id = produit.Id,
                 Nom = produit.Nom,
-                Prix = produit.Prix, 
+                Prix = produit.Prix,
                 Stock = produit.Stock
             };
         }
 
         public async Task<int> CreerAsync(ProduitDto dto)
         {
-            var produit = new Produit(dto.Nom, dto.Prix, dto.Stock); 
+            var prix = Convert.ToDecimal(dto.Prix, CultureInfo.GetCultureInfo("fr-FR"));
+            var produit = new Produit(dto.Nom, prix, dto.Stock);
 
             await _repo.AddAsync(produit);
             await _repo.SaveChangesAsync();
@@ -57,8 +59,10 @@ namespace Application.Service
             var produit = await _repo.GetByIdAsync(id);
             if (produit == null) return false;
 
+            var prix = Convert.ToDecimal(dto.Prix, CultureInfo.GetCultureInfo("fr-FR"));
+
             produit.ChangerNom(dto.Nom);
-            produit.ChangerPrix(dto.Prix); 
+            produit.ChangerPrix(prix);
             produit.ChangerStock(dto.Stock);
 
             await _repo.SaveChangesAsync();
